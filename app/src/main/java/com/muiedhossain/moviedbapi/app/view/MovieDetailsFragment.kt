@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.muiedhossain.moviedbapi.R
 import com.muiedhossain.moviedbapi.app.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.model.Genre
 import com.muiedhossain.moviedbapi.app.viewModel.MovieDetailsViewModel
@@ -35,7 +33,7 @@ class MovieDetailsFragment : Fragment() {
 
 
         viewModel.getMovieDetails().observe(viewLifecycleOwner) {
-            Log.e("details", "onCreateView: " + it.poster_path)
+            Log.e("details", "onCreateView: " + it.backdrop_path)
 
             var genre: String? = null
             val builder = StringBuilder()
@@ -46,18 +44,22 @@ class MovieDetailsFragment : Fragment() {
 
             bookmarks = BookmarkModel(0, it.id.toLong(), it.title, time, genre!!)
 
-
             binding.movieDetailsLengthTVID.text =
                 "$hour h $minute min"
             Glide.with(requireActivity())
-                .load("https://image.tmdb.org/t/p/w500/" + it.poster_path)
+                .load("https://image.tmdb.org/t/p/w500/" + it.backdrop_path)
                 .into(binding.movieDetailsImage)
             binding.details = it
-            binding.movieDetailsBookmarkBTN.setOnClickListener {
-                Log.e("bookmark", "onCreateView: hello bookmark")
-                viewModel.insertBookMarks(bookmarks)
             }
+        binding.movieDetailsBookmarkBTN.setOnClickListener {
+            Log.e("bookmark", "onCreateView: hello bookmark" )
+            viewModel.insertBookMarks(bookmarks)
         }
         return binding.root
+    }
+    private fun checkBookmarked(id : Long) {
+        viewModel.getMovieById(id).observe(viewLifecycleOwner){
+            Log.e("favorite", "checkFavorite: favorite00009"+it )
+        }
     }
 }
