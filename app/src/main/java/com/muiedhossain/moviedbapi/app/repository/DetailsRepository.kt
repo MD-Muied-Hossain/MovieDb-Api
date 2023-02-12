@@ -43,7 +43,7 @@ class DetailsRepository (
         try {
             var result = dao.getMovieById(bookmarkId)
             bookmarkedMutableData.postValue(result.value)
-            Log.e("favorite", "checkFavorite: favorite00009"+result.value.toString() )
+            Log.e("Bookmark", "checkFavorite: Bookmarked"+result.value.toString() )
 
         }catch (e:Exception){}
 
