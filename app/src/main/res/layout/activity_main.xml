@@ -2,13 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data></data>
+    <data>
+
+    </data>
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.MainActivity">
-        <!--tools:openDrawer="start"-->
+        tools:context=".app.view.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,7 +28,7 @@
                 layout="@layout/toolbar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />-->
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/container"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"

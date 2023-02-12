@@ -2,4 +2,6 @@
     <string name="app_name">Movie DB Api</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">The Darkest Day Of My Life</string>
+    <string name="desp"> Darkest Day[1] is the eighth studio album by the American death metal band Obituary. It was released on June 30, 2009 through Candlelight Records.[1] Darkest Day is the final Obituary album to feature both longtime bassist Frank Watkins, who had played in the band since Cause of Death (1990), and guitarist Ralph Santolla.</string>
 </resources>

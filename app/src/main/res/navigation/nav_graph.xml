@@ -7,16 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.muiedhossain.moviedbapi.view.HomeFragment"
+        android:name="com.muiedhossain.moviedbapi.app.view.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/bookmarkFragment"
-        android:name="com.muiedhossain.moviedbapi.view.BookmarkFragment"
+        android:name="com.muiedhossain.moviedbapi.app.view.BookmarkFragment"
         android:label="Bookmark"
         tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.muiedhossain.moviedbapi.app.view.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" />
 </navigation>

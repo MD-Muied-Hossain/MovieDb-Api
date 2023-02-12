@@ -1,0 +1,49 @@
+package com.muiedhossain.moviedbapi.app.viewModel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import com.muiedhossain.moviedbapi.app.api.ApiInterface
+import com.muiedhossain.moviedbapi.app.api.RetrofitInstance
+import com.muiedhossain.moviedbapi.app.dao.MovieDao
+import com.muiedhossain.moviedbapi.app.database.MovieDatabase
+import com.muiedhossain.moviedbapi.app.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
+import com.muiedhossain.moviedbapi.app.repository.DetailsRepository
+import kotlinx.coroutines.launch
+
+class MovieDetailsViewModel(application: Application) : AndroidViewModel(application) {
+    private lateinit var repository: DetailsRepository
+    private lateinit var api: ApiInterface
+    private lateinit var dao: MovieDao
+
+    init {
+        dao = MovieDatabase.getDataBaseInstance(application).getDao()
+        api = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        repository = DetailsRepository(dao, api)
+    }
+
+    fun getMovieDetails(): LiveData<MovieDetailsModel> {
+        viewModelScope.launch {
+            repository.getMovieDetails()
+        }
+        return repository.detailsLiveData
+    }
+
+    fun insertBookMarks(bookmarkModel: BookmarkModel) {
+        viewModelScope.launch {
+            repository.insertBookMarks(bookmarkModel)
+        }
+    }
+
+    fun getMovieById(bookmarkId: Long): LiveData<Boolean> {
+        viewModelScope.launch {
+            try {
+                repository.getMovieById(bookmarkId)
+            } catch (e: Exception) {
+            }
+        }
+        return repository.bookmarkedLiveData
+    }
+}
