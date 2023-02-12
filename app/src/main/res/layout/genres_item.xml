@@ -5,10 +5,10 @@
     <TextView
         android:id="@+id/single_movie_details_genre1"
         android:textAlignment="center"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginRight="7dp"
+        android:layout_marginEnd="7dp"
         android:background="@drawable/genre_background"
         android:padding="5dp"
         android:text="Action"

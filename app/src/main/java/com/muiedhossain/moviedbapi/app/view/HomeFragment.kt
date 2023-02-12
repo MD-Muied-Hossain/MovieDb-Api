@@ -59,6 +59,7 @@ class HomeFragment : Fragment() {
         }
         viewModel_popular.getPopularMovie(1).observe(viewLifecycleOwner){
             popularMovieAdapter.submitList(it.results)
+            Log.d("popularMOVIEItem", "onCreateView: "+it.results.toString())
            // mProgressDialog.dismiss()
         }
         return binding.root

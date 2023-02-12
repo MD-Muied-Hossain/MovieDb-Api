@@ -9,104 +9,102 @@
             type="com.muiedhossain.moviedbapi.app.model.PopularMovieResult" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="150dp"
+        app:cardCornerRadius="5dp">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="8dp"
-            app:cardMaxElevation="10dp"
-            android:layout_margin="10dp">
+            android:orientation="horizontal"
+            android:padding="7dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/popular_item_image"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:src="@drawable/movie_placeholder"
+                android:scaleType="fitXY"
+                imageFromUrl="@{popular.poster_path}"
+                android:layout_marginRight="15dp" />
 
-                <ImageView
-                    android:id="@+id/popular_item_image"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:scaleType="fitXY"
-                    imageFromUrl="@{popular.poster_path}" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/popular_movie_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{popular.title}"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/popular_item_image"
-                    app:layout_constraintTop_toTopOf="@+id/popular_item_image" />
+                    android:textColor="@color/black" />
 
-                <TextView
-                    android:id="@+id/popular_item_rating"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{String.valueOf(popular.vote_average)}"
-                    app:layout_constraintStart_toEndOf="@+id/star_icon"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_movie_item_name" />
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/rating" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        tools:text="9.1"
+                        android:textSize="10sp"
+                        android:text="@{String.valueOf(popular.vote_average)}"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="/10 IMDb"
+                        android:textSize="10sp"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/movie_genres_recyclerVIew_popular_item"
-                    android:padding="5dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="horizontal"
-                    android:background="#fefefe"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="3dp"
                     android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/genres_item"
-                    app:layout_constraintStart_toEndOf="@+id/popular_item_image"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_item_rating"
-                    />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                <TextView
-                    android:id="@+id/popular_item_duration"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="8dp"
-                    android:text="1h22min"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toEndOf="@+id/popular_item_image"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_genres_recyclerVIew_popular_item" />
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/star_icon"
-                    android:layout_width="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/popular_item_rating"
-                    app:layout_constraintStart_toEndOf="@+id/popular_item_image"
-                    app:layout_constraintTop_toTopOf="@+id/popular_item_rating"
-                    app:srcCompat="@drawable/rating" />
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/clock" />
 
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/popular_item_duration"
-                    app:layout_constraintEnd_toStartOf="@+id/popular_item_duration"
-                    app:layout_constraintStart_toEndOf="@+id/popular_item_image"
-                    app:layout_constraintTop_toTopOf="@+id/popular_item_duration"
-                    app:srcCompat="@drawable/clock" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/popular_item_duration"
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/black"
+                        android:text="1h 22m" />
+                </LinearLayout>
+            </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
-
-
+    </androidx.cardview.widget.CardView>
 </layout>

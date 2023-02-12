@@ -1,5 +1,6 @@
 package com.muiedhossain.moviedbapi.app.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
@@ -18,9 +19,8 @@ class PopularMovieRepository(
     suspend fun getPopularMovie(page : Int){
         try {
             var popularMovieResult = api.getPopularMovie(page)
-            if(popularMovieResult!=null){
-                popularMovieLiveData.postValue(popularMovieResult.body())
-            }
+            popularMovieLiveData.postValue(popularMovieResult.body())
+           //Log.e("popularMovieResult", "getPopularMovie: "+popularMovieResult.body() )
         }catch (e:Exception){}
     }
 
