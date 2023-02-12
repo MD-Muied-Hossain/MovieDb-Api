@@ -7,9 +7,6 @@ plugins {
 android {
     namespace 'com.muiedhossain.moviedbapi'
     compileSdk 33
-    buildFeatures{
-        dataBinding = true
-    }
 
     defaultConfig {
         applicationId "com.muiedhossain.moviedbapi"
@@ -33,6 +30,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures{
+        dataBinding = true
     }
 
 }
