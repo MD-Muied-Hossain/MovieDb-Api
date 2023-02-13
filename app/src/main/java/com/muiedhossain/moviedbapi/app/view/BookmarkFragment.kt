@@ -23,12 +23,12 @@ class BookmarkFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(BookmarkViewModel::class.java)
         binding.toolbar.appBarTV.text = "Bookmarks"
 
-        viewModel.getBookMarkMovie().observe(viewLifecycleOwner) {
+        /*viewModel.getBookMarkMovie().observe(viewLifecycleOwner) {
             for (i in 0..it.size - 1) {
                 val splitingWithComma = it.get(i).genreList.split(",").toTypedArray()
 
             }
-        }
+        }*/
         return binding.root
     }
 }

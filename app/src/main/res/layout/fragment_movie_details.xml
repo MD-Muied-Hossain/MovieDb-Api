@@ -4,9 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="details"
-            type="com.muiedhossain.moviedbapi.app.model.MovieDetailsModel" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -22,8 +20,6 @@
                 android:id="@+id/movieDetailsImage"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                imageFromUrl="@{details.poster_path}"
-                android:scaleType="fitXY"
                 android:src="@drawable/movie"/>
 
             <RelativeLayout
@@ -45,7 +41,6 @@
                         android:id="@+id/movieDetails_Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{details.title}"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -75,8 +70,7 @@
                         android:id="@+id/movieDetails_Star_Rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="9.1/10 IMDb"/>
+                        android:layout_marginLeft="5dp" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -136,7 +130,6 @@
                             android:id="@+id/movieDetails_Language_TVID"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{details.original_language}"
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="15sp"
@@ -174,7 +167,6 @@
                     android:id="@+id/single_MovieDetails_Description_TVID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{details.overview}"
                     android:textColor="#838383"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/single_MovieDetails_LL"/>

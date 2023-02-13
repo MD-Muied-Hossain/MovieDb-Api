@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.model.Genre
 import com.muiedhossain.moviedbapi.app.viewModel.MovieDetailsViewModel
@@ -30,27 +31,28 @@ class MovieDetailsFragment : Fragment() {
         binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(MovieDetailsViewModel::class.java)
 
-
-
         viewModel.getMovieDetails().observe(viewLifecycleOwner) {
-            Log.e("details", "onCreateView: " + it.backdrop_path)
-
-            var genre: String? = null
-            val builder = StringBuilder()
+            //Log.e("details", "onCreateView: " + it.backdrop_path)
 
             var hour = it.runtime / 60
             var minute = it.runtime % 60
             var time = hour.toString() + "h " + minute.toString() + "min"
 
-            bookmarks = BookmarkModel(0, it.id.toLong(), it.title, time, genre!!)
+            bookmarks = BookmarkModel(0, it.id.toLong(), it.title, time)
 
-            binding.movieDetailsLengthTVID.text =
-                "$hour h $minute min"
+
+            binding.movieDetailsLengthTVID.text= "$hour h $minute min"
+
             Glide.with(requireActivity())
-                .load("https://image.tmdb.org/t/p/w500/" + it.backdrop_path)
+                .load("https://image.tmdb.org/t/p/w500" + it.backdrop_path)
                 .into(binding.movieDetailsImage)
-            binding.details = it
+            binding.movieDetailsTitle.text = it.title
+            binding.movieDetailsStarRating.text = it.vote_average.toString()
+            binding.movieDetailsLanguageTVID.text = it.original_language
+            binding.singleMovieDetailsDescriptionTVID.text = it.overview
+
             }
+
         binding.movieDetailsBookmarkBTN.setOnClickListener {
             Log.e("bookmark", "onCreateView: hello bookmark" )
             viewModel.insertBookMarks(bookmarks)

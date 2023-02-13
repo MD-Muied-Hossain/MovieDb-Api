@@ -7,12 +7,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "bookmark_Table")
 data class BookmarkModel(
     @PrimaryKey(autoGenerate = true)
-    val id : Long,
+    val id: Long,
     @ColumnInfo(name = "bookmark_id")
-    val bookmarkId : Long,
-    val name : String,
-    val runTime : String,
-    @ColumnInfo(name = "genre")
-    val genreList : String
+    val bookmarkId: Long,
+    val name: String,
+    val runTime: String
 )
 

@@ -24,12 +24,16 @@ class DetailsRepository (
 
     suspend fun getMovieDetails(){
         try {
-            val id = ConstraintUtils.movieDetails.selectedMovieID
-            var result = api.getMovieDetails(id)
+            val movieId = ConstraintUtils.movieDetails.selectedMovieID
+            Log.d("movieDetails", "getMovieDetails ID: "+movieId)
+            var result = api.getMovieDetails(movieId)
+            Log.d("movieDetails", "getMovieDetails: "+result.body())
             if(result!=null){
                 detailsMutableData.postValue(result.body())
             }
-        }catch (e:Exception){}
+        }catch (e:Exception){
+            Log.d("movieDetails", "asena: ")
+        }
     }
 
     suspend fun insertBookMarks(bookmarkModel: BookmarkModel){
@@ -43,7 +47,6 @@ class DetailsRepository (
         try {
             var result = dao.getMovieById(bookmarkId)
             bookmarkedMutableData.postValue(result.value)
-            Log.e("Bookmark", "checkFavorite: Bookmarked"+result.value.toString() )
 
         }catch (e:Exception){}
 
