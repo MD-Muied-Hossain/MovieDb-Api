@@ -6,16 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.muiedhossain.moviedbapi.R
+import com.muiedhossain.moviedbapi.app.adapter.BookmarkAdapter
+import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.viewModel.BookmarkViewModel
+import com.muiedhossain.moviedbapi.databinding.BookmarkItemBinding
 import com.muiedhossain.moviedbapi.databinding.FragmentBookmarkBinding
 
 
 class BookmarkFragment : Fragment() {
 
     private lateinit var binding: FragmentBookmarkBinding
+    private lateinit var binding2: BookmarkItemBinding
     private lateinit var viewModel: BookmarkViewModel
+    private lateinit var bookmarkAdapter: BookmarkAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,12 +31,38 @@ class BookmarkFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(BookmarkViewModel::class.java)
-        binding.toolbar.appBarTV.text = "Bookmark"
+        binding.toolbar.toolBarTV.text = "Bookmark"
 
-        viewModel.getBookMarkMovie().observe(viewLifecycleOwner) {
-            Log.d("bookmoovie", "onCreateView: "+viewModel.getBookMarkMovie())
+        viewModel.getBookmarkMovie().observe(viewLifecycleOwner) {
+            Log.d("bookmoovie", "onCreateView: "+viewModel.getBookmarkMovie())
 
         }
+
+        bookmarkAdapter = BookmarkAdapter{book,value ->
+            if(value==1){
+                Toast.makeText(context,"deleted",Toast.LENGTH_SHORT).show()
+                    viewModel.deleteBookmark(book.bookmarkId)
+                }
+            else{
+                ConstraintUtils.movieDetails.selectedMovieID = book.bookmarkId.toInt()
+                findNavController().navigate(R.id.movieDetailsFragment)
+            }
+        }
+
+        binding.bookmarkRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = bookmarkAdapter
+        }
+        bookmarkAdapter.notifyDataSetChanged()
+
+        viewModel.getBookmarkMovie().observe(viewLifecycleOwner){
+            bookmarkAdapter.submitList(it)
+        }
+        /*binding2.bookmarkItemDeleteBtn.setOnClickListener{
+            viewModel.deleteBookmark()
+        }*/
+
+
         return binding.root
     }
 }

@@ -33,6 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@{bookmark.imageUrl}"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
@@ -49,7 +50,7 @@
                 android:id="@+id/bookmark_movie_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attak on titan"
+                android:text="@{bookmark.name}"
                 android:layout_marginLeft="5dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -62,7 +63,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
-                android:text="9/10 Ratings"
                 app:layout_constraintStart_toEndOf="@+id/star_icon"
                 app:layout_constraintTop_toBottomOf="@+id/bookmark_movie_item_name" />
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="8dp"
-                android:text="1h22min"
+                android:text="@{bookmark.runTime}"
                 android:textColor="@color/black"
                 android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/bookmark_item_image"

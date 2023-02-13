@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.database.MovieDatabase
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
@@ -38,15 +37,19 @@ class DetailsRepository (
         }
     }
 
-    suspend fun insertBookMarks(bookmarkModel: BookmarkModel){
+    suspend fun insertBookmark(bookmarkModel: BookmarkModel){
         Log.d("bookmark2", "repo1: bookmarkModel")
         try {
-            dao.insertBookMarks(bookmarkModel)
+            dao.insertBookmark(bookmarkModel)
             Log.d("bookmark2", "repo2: "+bookmarkModel)
         }catch (e:Exception){
             Log.d("error", "insertBookMarks: "+ e.localizedMessage)
         }
-
+    }
+    suspend fun deleteBookMarks(id: Long){
+        try {
+            dao.deleteBookmarked(id)
+        }catch (e:Exception){}
     }
 
     fun getMovieById(bookmarkId : Long){

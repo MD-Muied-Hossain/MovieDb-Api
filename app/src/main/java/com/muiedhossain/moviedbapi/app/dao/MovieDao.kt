@@ -13,10 +13,10 @@ interface MovieDao {
     @Insert
     suspend fun insertGenre(genre: List<Genre>)
     @Insert
-    suspend fun insertBookMarks(bookmarkModel: BookmarkModel)
+    suspend fun insertBookmark(bookmarkModel: BookmarkModel)
 
     @Query("DELETE FROM bookmark_Table WHERE bookmark_id = :bookmarkId")
-    suspend fun deleteBookMarks(bookmarkId : Long)
+    suspend fun deleteBookmarked(bookmarkId : Long)
 
     @Query("SELECT bookmark_id FROM bookmark_Table WHERE bookmark_id = :bookmarkId")
     fun getMovieById(bookmarkId : Long) : LiveData<Boolean>
@@ -26,5 +26,8 @@ interface MovieDao {
 
     @Query("SELECT * FROM genre_Table WHERE id = :id")
     suspend fun getGenreDataByID(id : Int) : List<Genre>
+
+    @Query("SELECT * FROM genre_Table")
+    suspend fun getAllGenres() : List<Genre>
 
 }

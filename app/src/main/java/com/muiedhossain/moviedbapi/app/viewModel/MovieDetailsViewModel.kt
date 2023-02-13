@@ -32,10 +32,17 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
         return repository.detailsLiveData
     }
 
-    fun insertBookMarks(bookmarkModel: BookmarkModel) {
+    fun insertBookmark(bookmarkModel: BookmarkModel) {
         viewModelScope.launch {
-            repository.insertBookMarks(bookmarkModel)
+            repository.insertBookmark(bookmarkModel)
             Log.d("viewModel", "insertBookMarks: "+bookmarkModel)
+        }
+    }
+    fun deleteBookmark(id: Long){
+        viewModelScope.launch {
+            try {
+                repository.deleteBookMarks(id)
+            }catch (e:Exception){}
         }
     }
 
