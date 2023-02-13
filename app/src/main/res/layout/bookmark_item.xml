@@ -36,7 +36,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
-                android:id="@+id/bookmark_item_delete"
+                android:id="@+id/bookmark_item_delete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

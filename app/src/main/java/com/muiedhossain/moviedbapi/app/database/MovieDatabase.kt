@@ -10,9 +10,7 @@ import com.muiedhossain.moviedbapi.app.model.Genre
 
 @Database(entities = [Genre::class, BookmarkModel::class], version = 1/*,exportSchema = false*/)
 abstract class MovieDatabase : RoomDatabase() {
-
     abstract fun getDao() : MovieDao
-
     companion object{
         @Volatile
         private var movieDataBase : MovieDatabase? = null

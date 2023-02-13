@@ -1,6 +1,7 @@
 package com.muiedhossain.moviedbapi.app.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -34,6 +35,7 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
     fun insertBookMarks(bookmarkModel: BookmarkModel) {
         viewModelScope.launch {
             repository.insertBookMarks(bookmarkModel)
+            Log.d("viewModel", "insertBookMarks: "+bookmarkModel)
         }
     }
 

@@ -5,13 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
+import com.muiedhossain.moviedbapi.app.database.MovieDatabase
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
 
 class DetailsRepository (
     private var dao: MovieDao,
-    private var api: ApiInterface) {
+    private var api: ApiInterface
+    ) {
 
     private var detailsMutableData = MutableLiveData<MovieDetailsModel>()
     private var bookmarkedMutableData = MutableLiveData<Boolean>()
@@ -37,9 +39,13 @@ class DetailsRepository (
     }
 
     suspend fun insertBookMarks(bookmarkModel: BookmarkModel){
+        Log.d("bookmark2", "repo1: bookmarkModel")
         try {
             dao.insertBookMarks(bookmarkModel)
-        }catch (e:Exception){}
+            Log.d("bookmark2", "repo2: "+bookmarkModel)
+        }catch (e:Exception){
+            Log.d("error", "insertBookMarks: "+ e.localizedMessage)
+        }
 
     }
 

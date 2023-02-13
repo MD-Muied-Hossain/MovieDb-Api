@@ -32,13 +32,12 @@ class MovieDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(MovieDetailsViewModel::class.java)
 
         viewModel.getMovieDetails().observe(viewLifecycleOwner) {
-            //Log.e("details", "onCreateView: " + it.backdrop_path)
 
             var hour = it.runtime / 60
             var minute = it.runtime % 60
             var time = hour.toString() + "h " + minute.toString() + "min"
 
-            bookmarks = BookmarkModel(0, it.id.toLong(), it.title, time)
+            bookmarks = BookmarkModel( bookmarkId = it.id.toLong(), name = it.title, runTime = time)
 
 
             binding.movieDetailsLengthTVID.text= "$hour h $minute min"
@@ -54,14 +53,16 @@ class MovieDetailsFragment : Fragment() {
             }
 
         binding.movieDetailsBookmarkBTN.setOnClickListener {
-            Log.e("bookmark", "onCreateView: hello bookmark" )
+            Log.e("bookmark2", "view1: bookmark Clicked" )
             viewModel.insertBookMarks(bookmarks)
+            Log.e("bookmark3", "view2: "+viewModel.insertBookMarks(bookmarks) )
+
         }
         return binding.root
     }
     private fun checkBookmarked(id : Long) {
         viewModel.getMovieById(id).observe(viewLifecycleOwner){
-            Log.e("favorite", "checkFavorite: favorite00009"+it )
+            Log.e("bookMarkView", "checkFavorite: favorite00009"+it )
         }
     }
 }

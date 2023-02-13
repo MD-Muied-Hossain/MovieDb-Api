@@ -1,11 +1,14 @@
 package com.muiedhossain.moviedbapi.app.adapter
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.database.MovieDatabase
-import com.muiedhossain.moviedbapi.app.repository.BookmarkRepository
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
+import com.muiedhossain.moviedbapi.app.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.model.Result
+import com.muiedhossain.moviedbapi.databinding.BookmarkItemBinding
+import com.muiedhossain.moviedbapi.databinding.NowshowingMovieItemBinding
 
 class BookmarkAdapter{
 }
