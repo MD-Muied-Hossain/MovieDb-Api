@@ -22,9 +22,15 @@ class NowShowingMovieViewModel(application: Application)
     private lateinit var dao : MovieDao
 
     init {
+        api = RetrofitInstance.getRetrofitInstance()
+            .create(ApiInterface::class.java)
         dao = MovieDatabase.getDataBaseInstance(application).getDao()
         repository = NowShowingRepository(api,dao)
     }
+
+    val NowShowingMovieResult : LiveData<NowShowingMovieModel>
+        get() = repository.movieResult
+
     fun getNowShowingMovie(page : Int) : LiveData<NowShowingMovieModel> {
         viewModelScope.launch {
             repository.getNowShowingMovie(page)

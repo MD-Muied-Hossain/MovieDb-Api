@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_margin="5dp">
         <TextView
             android:id="@+id/single_movie_details_genre1"
@@ -23,7 +24,7 @@
             android:background="@drawable/genre_background"
             android:padding="10dp"
             android:text="@{genres.name}"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
 </layout>

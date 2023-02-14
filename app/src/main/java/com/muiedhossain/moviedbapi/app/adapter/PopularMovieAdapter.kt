@@ -9,7 +9,7 @@ import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.model.PopularMovieResult
 import com.muiedhossain.moviedbapi.databinding.PopulerMovieItemBinding
 
-class PopularMovieAdapter(val callback: (movie: PopularMovieResult) -> Unit) :
+class PopularMovieAdapter(val callback: (movie: PopularMovieResult,binding : PopulerMovieItemBinding,value : Int) -> Unit) :
     ListAdapter<PopularMovieResult, PopularMovieAdapter.PopularMovieViewHolder>(PopularMovieDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMovieViewHolder {
@@ -24,7 +24,7 @@ class PopularMovieAdapter(val callback: (movie: PopularMovieResult) -> Unit) :
         holder.bind(result)
         holder.binding.root.setOnClickListener {
             ConstraintUtils.movieDetails.selectedMovieID = result.id
-            callback(result)
+            callback(result,holder.binding,2)
         }
     }
 
