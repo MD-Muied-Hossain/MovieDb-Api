@@ -61,6 +61,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         tools:text="9.1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
                         android:textSize="10sp"
                         android:text="@{String.valueOf(popular.vote_average)}"
                         />
@@ -68,23 +70,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:text="/10 IMDb"
                         android:textSize="10sp"/>
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="3dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:id="@+id/popularGanerRVID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="3dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/genres_item" />
 
+                </HorizontalScrollView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+
                     android:orientation="horizontal">
 
                     <ImageView
@@ -96,6 +107,7 @@
                     <TextView
                         android:id="@+id/popular_item_duration"
                         android:textSize="10sp"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

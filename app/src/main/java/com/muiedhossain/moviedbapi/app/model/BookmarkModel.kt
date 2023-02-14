@@ -14,7 +14,9 @@ data class BookmarkModel(
     val runTime : String,
     val ratting : String,
     @ColumnInfo(name = "image_path")
-    val imageUrl : String
+    val imageUrl : String,
+    @ColumnInfo(name = "genre")
+val genreList : String
 )
 /*
     @ColumnInfo(name = "genre")
