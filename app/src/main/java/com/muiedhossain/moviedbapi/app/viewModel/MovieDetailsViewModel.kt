@@ -46,7 +46,7 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    fun getMovieById(bookmarkId: Long): LiveData<Boolean> {
+    fun getMovieById(bookmarkId: Long): LiveData<BookmarkModel> {
         viewModelScope.launch {
             try {
                 repository.getMovieById(bookmarkId)

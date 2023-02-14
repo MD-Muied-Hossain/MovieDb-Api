@@ -20,16 +20,18 @@
                 android:id="@+id/movieDetailsImage"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/movie"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/movie_placeholder"/>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/details_bg"
                 android:padding="20dp"
+                android:orientation="vertical"
                 android:layout_marginTop="230dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/single_MovieDetails_Titleee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_weight="1"
                         android:id="@+id/movieDetails_Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -46,12 +49,13 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:layout_weight="1"
                         android:id="@+id/movieDetails_Bookmark_BTN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/bookmark_uncheck"/>
-                </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/single_MovieDetails_Rating_LL"
@@ -171,7 +175,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/single_MovieDetails_LL"/>
 
-            </RelativeLayout>
+            </LinearLayout>
         </FrameLayout>
 
     </androidx.core.widget.NestedScrollView>

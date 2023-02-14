@@ -2,10 +2,11 @@ package com.muiedhossain.moviedbapi.app.view
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.muiedhossain.moviedbapi.R
@@ -22,7 +23,7 @@ class MovieDetailsFragment : Fragment() {
     private var genresList = ArrayList<Genre>()
 
     // private lateinit var genresAdapter: GenresAdapter
-    private var bookmarked: Boolean = false
+    private var isBookmarked: Boolean = false
 
     // private lateinit var genresAdapter: GenresAdapter
     private lateinit var bookmarkModel: BookmarkModel
@@ -48,6 +49,8 @@ class MovieDetailsFragment : Fragment() {
 
             binding.movieDetailsLengthTVID.text = "$hour h $minute min"
 
+            bookmarkedCompleted()
+
             Glide.with(requireActivity())
                 .load("https://image.tmdb.org/t/p/w500" + it.backdrop_path)
                 .into(binding.movieDetailsImage)
@@ -58,39 +61,52 @@ class MovieDetailsFragment : Fragment() {
 
         }
         binding.movieDetailsBookmarkBTN.setOnClickListener {
-            if (bookmarked) {
-                viewModel.deleteBookmark(ConstraintUtils.movieDetails.selectedMovieID.toLong())
-                checkBookmarked()
-            } else {
-                viewModel.insertBookmark(bookmarkModel)
-                checkBookmarked()
-            }
+                if (isBookmarked) {
+                    isBookmarked = false
+                    viewModel.deleteBookmark(ConstraintUtils.movieDetails.selectedMovieID.toLong())
+                    Glide.with(requireActivity())
+                        .load(R.drawable.bookmark_uncheck)
+                        .into(binding.movieDetailsBookmarkBTN)
+                    Toast.makeText(context,"Bookmark Removed",Toast.LENGTH_SHORT).show()
+                } else {
+                    isBookmarked = true
+                    viewModel.insertBookmark(bookmarkModel)
+                    Glide.with(requireActivity())
+                        .load(R.drawable.bookmark_check)
+                        .into(binding.movieDetailsBookmarkBTN)
+                    Toast.makeText(context,"Bookmark Added",Toast.LENGTH_SHORT).show()
+                }
+
+
         }
 
-        binding.movieDetailsBookmarkBTN.setOnClickListener {
+        /*binding.movieDetailsBookmarkBTN.setOnClickListener {
             Log.e("bookmark2", "view1: bookmark Clicked")
             viewModel.insertBookmark(bookmarkModel)
-            Log.e("bookmark3", "view2: " + viewModel.insertBookmark(bookmarkModel))
+            //Log.e("bookmark3", "view2: " + viewModel.insertBookmark(bookmarkModel))
 
-        }
+        }*/
         return binding.root
     }
 
-    private fun checkBookmarked() {
+    private fun bookmarkedCompleted() {
         viewModel.getMovieById(ConstraintUtils.movieDetails.selectedMovieID.toLong())
             .observe(viewLifecycleOwner) {
                 if (it != null) {
-                    bookmarked = true
+                    isBookmarked= true
+
                     Glide.with(requireActivity())
                         .load(R.drawable.bookmark_check)
                         .into(binding.movieDetailsBookmarkBTN)
                 } else {
-                    bookmarked = false
+                    isBookmarked = false
                     Glide.with(requireActivity())
                         .load(R.drawable.bookmark_uncheck)
                         .into(binding.movieDetailsBookmarkBTN)
                 }
-                Log.e("fads", "onCreateView: " + it.toString())
+//                Log.e("himu", "onCreateView: " + it.toString())
             }
     }
+
+
 }

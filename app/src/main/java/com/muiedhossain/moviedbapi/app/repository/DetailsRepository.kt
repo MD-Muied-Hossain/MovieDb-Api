@@ -15,12 +15,12 @@ class DetailsRepository (
     ) {
 
     private var detailsMutableData = MutableLiveData<MovieDetailsModel>()
-    private var bookmarkedMutableData = MutableLiveData<Boolean>()
+    private var bookmarkedMutableData = MutableLiveData<BookmarkModel>()
 
     val detailsLiveData : LiveData<MovieDetailsModel>
         get() = detailsMutableData
 
-    val bookmarkedLiveData : LiveData<Boolean>
+    val bookmarkedLiveData : LiveData<BookmarkModel>
         get() = bookmarkedMutableData
 
     suspend fun getMovieDetails(){
@@ -52,10 +52,11 @@ class DetailsRepository (
         }catch (e:Exception){}
     }
 
-    fun getMovieById(bookmarkId : Long){
+    suspend fun getMovieById(bookmarkId : Long){
         try {
             var result = dao.getMovieById(bookmarkId)
-            bookmarkedMutableData.postValue(result.value)
+            bookmarkedMutableData.postValue(result)
+            Log.d("IdBookmark", "getMovieById: "+bookmarkedMutableData)
 
         }catch (e:Exception){}
 

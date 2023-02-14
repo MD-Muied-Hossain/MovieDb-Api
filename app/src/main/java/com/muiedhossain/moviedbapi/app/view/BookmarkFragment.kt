@@ -20,8 +20,7 @@ import com.muiedhossain.moviedbapi.databinding.FragmentBookmarkBinding
 
 class BookmarkFragment : Fragment() {
 
-    private lateinit var binding: FragmentBookmarkBinding
-    private lateinit var binding2: BookmarkItemBinding
+    private lateinit var fragment_binding: FragmentBookmarkBinding
     private lateinit var viewModel: BookmarkViewModel
     private lateinit var bookmarkAdapter: BookmarkAdapter
     override fun onCreateView(
@@ -29,18 +28,15 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+        fragment_binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(BookmarkViewModel::class.java)
-        binding.toolbar.toolBarTV.text = "Bookmark"
+        fragment_binding.toolbar.toolBarTV.text = "Bookmark"
 
-        viewModel.getBookmarkMovie().observe(viewLifecycleOwner) {
-            Log.d("bookmoovie", "onCreateView: "+viewModel.getBookmarkMovie())
 
-        }
 
         bookmarkAdapter = BookmarkAdapter{book,value ->
             if(value==1){
-                Toast.makeText(context,"deleted",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Bookmark Removed",Toast.LENGTH_SHORT).show()
                     viewModel.deleteBookmark(book.bookmarkId)
                 }
             else{
@@ -49,7 +45,8 @@ class BookmarkFragment : Fragment() {
             }
         }
 
-        binding.bookmarkRecyclerView.apply {
+
+        fragment_binding.bookmarkRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = bookmarkAdapter
         }
@@ -57,12 +54,8 @@ class BookmarkFragment : Fragment() {
 
         viewModel.getBookmarkMovie().observe(viewLifecycleOwner){
             bookmarkAdapter.submitList(it)
+
         }
-        /*binding2.bookmarkItemDeleteBtn.setOnClickListener{
-            viewModel.deleteBookmark()
-        }*/
-
-
-        return binding.root
+        return fragment_binding.root
     }
 }

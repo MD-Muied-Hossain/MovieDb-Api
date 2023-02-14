@@ -18,8 +18,8 @@ interface MovieDao {
     @Query("DELETE FROM bookmark_Table WHERE bookmark_id = :bookmarkId")
     suspend fun deleteBookmarked(bookmarkId : Long)
 
-    @Query("SELECT bookmark_id FROM bookmark_Table WHERE bookmark_id = :bookmarkId")
-    fun getMovieById(bookmarkId : Long) : LiveData<Boolean>
+    @Query("SELECT * FROM bookmark_Table WHERE bookmark_id = :bookmarkId")
+    suspend fun getMovieById(bookmarkId : Long) : BookmarkModel
 
     @Query("SELECT * FROM bookmark_Table")
     fun getBookmarkedMovie() : LiveData<List<BookmarkModel>>
