@@ -1,5 +1,6 @@
 package com.muiedhossain.moviedbapi.app.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -22,32 +23,29 @@ class PopularMovieAdapter(val callback: (movie: PopularMovieResult,binding : Pop
     override fun onBindViewHolder(holder: PopularMovieViewHolder, position: Int) {
         var result = getItem(position)
         holder.bind(result)
-        holder.binding.root.setOnClickListener {
+        callback(result,holder.binding,2)
+
+        Log.e("callback", "onCreateView: insert" )
+
+        holder.binding.poppularCardItem.setOnClickListener {
             ConstraintUtils.movieDetails.selectedMovieID = result.id
-            callback(result,holder.binding,2)
+            callback(result,holder.binding,1)
         }
     }
 
     class PopularMovieViewHolder(var binding: PopulerMovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(popularMovie: PopularMovieResult) {
             binding.popular = popularMovie
         }
     }
 
     class PopularMovieDiffUtil : DiffUtil.ItemCallback<PopularMovieResult>() {
-        override fun areItemsTheSame(
-            oldItem: PopularMovieResult,
-            newItem: PopularMovieResult
-        ): Boolean {
+        override fun areItemsTheSame(oldItem: PopularMovieResult, newItem: PopularMovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(
-            oldItem: PopularMovieResult,
-            newItem: PopularMovieResult
-        ): Boolean {
+        override fun areContentsTheSame(oldItem: PopularMovieResult, newItem: PopularMovieResult): Boolean {
             return oldItem == newItem
         }
     }
