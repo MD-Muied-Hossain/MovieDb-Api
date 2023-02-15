@@ -70,26 +70,22 @@ class HomeFragment : Fragment() {
                         for (i in 0..it.size - 1) {
                             it.forEach {
                                 if (genre_ids == it.id) {
-                                    val dynamicTextView = TextView(requireContext())
-                                    dynamicTextView.text = it.name
-                                    dynamicTextView.setBackgroundResource(R.drawable.genre_background)
+                                    val getGenresString = TextView(requireContext())
+                                    getGenresString.text = it.name
+                                    getGenresString.setBackgroundResource(R.drawable.genre_background)
                                     val params = LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.WRAP_CONTENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT
                                     )
                                     params.setMargins(0, 10, 15, 5)
-
-                                    dynamicTextView.layoutParams = params
-                                    binding.popularGanerRVID.addView(dynamicTextView)
+                                    getGenresString.layoutParams = params
+                                    binding.popularGanerRVID.addView(getGenresString)
                                 }
-
                             }
                         }
-
                     }
                 }
             } else if (value == 1) {
-                Log.e("callback", "onCreateView: insert")
                 findNavController().navigate(R.id.movieDetailsFragment)
             }
         }
@@ -112,6 +108,7 @@ class HomeFragment : Fragment() {
         }
         binding.verticleRecyclerView.apply {
             layoutManager = popularLayoutManager
+            smoothScrollToPosition(0)
             adapter = popularMovieAdapter
         }
         ////////////////////////////4
@@ -125,7 +122,6 @@ class HomeFragment : Fragment() {
                 if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
                     isNowLoading = true
                 }
-
             }
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

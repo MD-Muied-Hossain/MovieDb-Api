@@ -33,7 +33,8 @@ class BookmarkFragment : Fragment() {
         // Inflate the layout for this fragment
         fragment_binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(BookmarkViewModel::class.java)
-        fragment_binding.toolbar.toolBarTV.text = "Bookmark"
+        //fragment_binding.toolbar.toolBarTV.text = "Bookmark"
+
 
         bookmarkAdapter = BookmarkAdapter{book,value ->
             if(value==1){

@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="details"
+            type="com.muiedhossain.moviedbapi.app.model.MovieDetailsModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -73,6 +75,13 @@
                     <TextView
                         android:id="@+id/movieDetails_Star_Rating"
                         android:layout_width="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="/ 10 IMDB"
+                        android:layout_marginTop="4dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp" />
                 </LinearLayout>
@@ -170,7 +179,7 @@
                 <TextView
                     android:id="@+id/single_MovieDetails_Description_TVID"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textColor="#838383"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/single_MovieDetails_LL"/>

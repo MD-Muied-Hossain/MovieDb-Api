@@ -25,7 +25,7 @@ class PopularMovieAdapter(val callback: (movie: PopularMovieResult,binding : Pop
         holder.bind(result)
         callback(result,holder.binding,2)
 
-        Log.e("callback", "onCreateView: insert" )
+        Log.e("callback", "onCreateView: Popular onBindViewHolder" )
 
         holder.binding.poppularCardItem.setOnClickListener {
             ConstraintUtils.movieDetails.selectedMovieID = result.id

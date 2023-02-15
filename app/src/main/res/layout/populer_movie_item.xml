@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
-                        android:text="/10 IMDb"
+                        android:text=" / 10 IMDb"
                         android:textSize="10sp"/>
                 </LinearLayout>
 

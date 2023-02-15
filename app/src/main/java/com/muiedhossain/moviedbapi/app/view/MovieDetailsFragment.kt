@@ -28,7 +28,6 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var bookmarkModel: BookmarkModel
     private var isBookmarked: Boolean = false
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,33 +36,24 @@ class MovieDetailsFragment : Fragment() {
         binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(MovieDetailsViewModel::class.java)
 
+        genresAdapter = GenresHorizontalViewAdapter()
+        binding.movieDetailsGenresRV.apply {
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            adapter = genresAdapter
+        }
+        genresAdapter.submitList(genresList)
+        genresAdapter.notifyDataSetChanged()
+
         viewModel.getMovieDetails().observe(viewLifecycleOwner) {
             bookmarkedCompleted()
 
-            genresAdapter = GenresHorizontalViewAdapter()
-            /////////bindings
+            var genresString : String? = null
+            val builder = StringBuilder()
+
             var hour = it.runtime / 60
             var minute = it.runtime % 60
             var time = hour.toString() + "h " + minute.toString() + "min"
 
-            binding.movieDetailsLengthTVID.text = "$hour h $minute min"
-            Glide.with(requireActivity())
-                .load("https://image.tmdb.org/t/p/w500" + it.backdrop_path)
-                .into(binding.movieDetailsImage)
-            binding.movieDetailsTitle.text = it.title
-            binding.movieDetailsStarRating.text = it.vote_average.toString()
-            binding.movieDetailsLanguageTVID.text = it.original_language
-            binding.singleMovieDetailsDescriptionTVID.text = it.overview
-            binding.movieDetailsGenresRV.apply {
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                adapter = genresAdapter
-            }
-            /////////bindings
-
-
-            ////////////////Genres
-            var genresString : String? = null
-            val builder = StringBuilder()
             genresList.clear()
             for(i in 0 until it.genres.size -1){
                 Log.e("genre", "onCreateView: genre" )
@@ -73,15 +63,22 @@ class MovieDetailsFragment : Fragment() {
                     .toString()
             }
 
-
-            genresAdapter.submitList(genresList)
-            genresAdapter.notifyDataSetChanged()
-            ////////////////Genres
-
             bookmarkModel = BookmarkModel(
                 bookmarkId = it.id.toLong(), name = it.title, runTime = time, genreList = genresString!!,
                 ratting = it.vote_average.toString(), imageUrl = it.poster_path
             )
+            binding.movieDetailsLengthTVID.text = "$hour h $minute min"
+            Glide.with(requireActivity())
+                .load("https://image.tmdb.org/t/p/w500" + it.backdrop_path)
+                .into(binding.movieDetailsImage)
+            binding.movieDetailsTitle.text = it.title
+            val rating = String.format("%.1f", it.vote_average)
+            binding.movieDetailsStarRating.text = rating.toString()
+            binding.movieDetailsLanguageTVID.text = it.original_language
+            binding.singleMovieDetailsDescriptionTVID.text = it.overview
+
+            binding.details = it
+           // Log.d("itGenres", "onCreateView: "+it.genres)
         }
 
 

@@ -19,21 +19,22 @@ fun ImageView.imageFromUrl(url : String){
 }
 
 @BindingAdapter("app:setGenreView")
-fun setGenreView(linear : LinearLayout, text: String){
+fun setGenreView(view : LinearLayout, text: String){
     val strs = text.split(",").toTypedArray()
 
-    linear.removeAllViews()
+    view.removeAllViews()
 
     for(i in 0..strs.size - 2){
-        val dynamicTextview = TextView(linear.context)
-        dynamicTextview.text = strs.get(i)
-        dynamicTextview.setBackgroundResource(R.drawable.genre_background)
+        val getGenresString = TextView(view.context)
+        getGenresString.text = strs.get(i)
+        getGenresString.setBackgroundResource(R.drawable.genre_background)
 
         val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         params.setMargins(0, 10, 15, 5)
 
-        dynamicTextview.layoutParams = params
+        getGenresString.layoutParams = params
 
-        linear.addView(dynamicTextview)
+        view.setPadding(5,5,5,5)
+        view.addView(getGenresString)
     }
 }
