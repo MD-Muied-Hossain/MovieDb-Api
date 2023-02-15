@@ -7,12 +7,11 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.model.NowShowingMovieModel
 
-class NowShowingRepository (private val api: ApiInterface,
-private val movieDao: MovieDao) {
+class NowShowingRepository (private val api: ApiInterface) {
 
     private val nowShowingMovieLiveData = MutableLiveData<NowShowingMovieModel>()
 
-    val movieResult: LiveData<NowShowingMovieModel>
+    val NosShowingMovieResult: LiveData<NowShowingMovieModel>
         get() = nowShowingMovieLiveData
 
     suspend fun getNowShowingMovie(page: Int) {

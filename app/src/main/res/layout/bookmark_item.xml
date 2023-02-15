@@ -27,8 +27,8 @@
 
             <ImageView
                 android:id="@+id/bookmark_item_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="130dp"
                 android:layout_margin="10dp"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{bookmark.name}"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/bookmark_item_image"
@@ -63,27 +63,34 @@
                 android:id="@+id/bookmark_item_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:text="@{bookmark.ratting}"
                 app:layout_constraintStart_toEndOf="@+id/star_icon"
                 app:layout_constraintTop_toBottomOf="@+id/bookmark_movie_item_name" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
+            <HorizontalScrollView
                 android:id="@+id/movie_genres_recyclerVIew_bookmark_item"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
-                android:background="#fefefe"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/genres_item"
+                android:scrollbars="none"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@+id/bookmark_item_image"
-                app:layout_constraintTop_toBottomOf="@+id/bookmark_item_rating"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/bookmark_item_rating">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="3dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:setGenreView="@{bookmark.genreList}"
+                    tools:listitem="@layout/genres_item" />
+
+            </HorizontalScrollView>
             <TextView
                 android:id="@+id/bookmark_item_duration"
                 android:layout_width="wrap_content"
@@ -98,15 +105,16 @@
 
             <ImageView
                 android:id="@+id/star_icon"
-                android:layout_width="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content"
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/bookmark_item_rating"
                 app:layout_constraintStart_toEndOf="@+id/bookmark_item_image"
                 app:layout_constraintTop_toTopOf="@+id/bookmark_item_rating"
                 app:srcCompat="@drawable/rating" />
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/bookmark_item_duration"

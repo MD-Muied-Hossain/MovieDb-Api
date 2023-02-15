@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muiedhossain.moviedbapi.R
 import com.muiedhossain.moviedbapi.app.adapter.BookmarkAdapter
+import com.muiedhossain.moviedbapi.app.adapter.PopularMovieAdapter
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.viewModel.BookmarkViewModel
 import com.muiedhossain.moviedbapi.databinding.BookmarkItemBinding
@@ -32,8 +35,6 @@ class BookmarkFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(BookmarkViewModel::class.java)
         fragment_binding.toolbar.toolBarTV.text = "Bookmark"
 
-
-
         bookmarkAdapter = BookmarkAdapter{book,value ->
             if(value==1){
                 Toast.makeText(context,"Bookmark Removed",Toast.LENGTH_SHORT).show()
@@ -44,7 +45,6 @@ class BookmarkFragment : Fragment() {
                 findNavController().navigate(R.id.movieDetailsFragment)
             }
         }
-
 
         fragment_binding.bookmarkRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

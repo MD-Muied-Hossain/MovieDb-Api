@@ -23,7 +23,6 @@
             android:layout_marginEnd="7dp"
             android:background="@drawable/genre_background"
             android:padding="10dp"
-            android:text="@{genres.name}"
             android:textSize="10sp" />
     </LinearLayout>
 

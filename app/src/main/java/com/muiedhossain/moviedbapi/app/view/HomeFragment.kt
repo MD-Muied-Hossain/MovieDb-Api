@@ -52,24 +52,19 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        viewModel_now =
-            ViewModelProvider(requireActivity()).get(NowShowingMovieViewModel::class.java)
-        viewModel_popular =
-            ViewModelProvider(requireActivity()).get(PopularMovieViewModel::class.java)
 
+        /////////////////////0
+        viewModel_now = ViewModelProvider(requireActivity()).get(NowShowingMovieViewModel::class.java)
+        viewModel_popular = ViewModelProvider(requireActivity()).get(PopularMovieViewModel::class.java)
+        /////////////////////0
+
+        //////////////////////////////1
         nowShowingMovieAdapter = NowShowingMovieAdapter { movie ->
             findNavController().navigate(R.id.movieDetailsFragment)
         }
-        /* popularMovieAdapter = PopularMovieAdapter{movie ->
-             findNavController().navigate(R.id.movieDetailsFragment)
-         }*/
-
-
-        //////////////////////////////
         popularMovieAdapter = PopularMovieAdapter { movie, binding, value ->
             if (value == 2) {
-                Log.e("callback2", "onCreateView: insert")
-                for (i in 0..movie.genre_ids.size - 1) {
+                for (i in 0 until movie.genre_ids.size) {
                     var genre_ids = movie.genre_ids.get(i)
                     viewModel_popular.getGenreDataByID(genre_ids).observe(viewLifecycleOwner) {
                         for (i in 0..it.size - 1) {
@@ -98,42 +93,30 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.movieDetailsFragment)
             }
         }
+        //////////////////////////////1
+
+        /////////////2
         fatchNowShowingMovieData(nowShowingPage)
         fatchPopularMovieData(popularMoviePage)
+        /////////////2
+
+        /////////////////////////////3
         val nowShowingLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         val popularLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-        /////////////////////////////
+        ////////////////////////////3
 
-
-
-        viewModel_popular.getGenre()
-
+        ////////////////////////////4
         binding.horizontalRecyclerview.apply {
             layoutManager = nowShowingLayoutManager
             adapter = nowShowingMovieAdapter
         }
-
-        viewModel_popular.popularMovieResult.observe(viewLifecycleOwner) {
-
-            for (i in 0 until it.results.size) {
-                popularList.add(it.results[i])
-            }
-            popularMovieAdapter.submitList(popularList)
-            popularMovieAdapter.notifyDataSetChanged()
-
-            //mProgressDialog.dismiss()
-
+        binding.verticleRecyclerView.apply {
+            layoutManager = popularLayoutManager
+            adapter = popularMovieAdapter
         }
-        viewModel_now.NowShowingMovieResult.observe(viewLifecycleOwner) {
+        ////////////////////////////4
 
-            for (i in 0 until it.results.size -1 ) {
-                nowShowinglist.add(it.results[i])
-            }
-            nowShowingMovieAdapter.submitList(nowShowinglist)
-            nowShowingMovieAdapter.notifyDataSetChanged()
-        }
-
-
+        ///////////////////////////5
         binding.horizontalRecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener(){
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -158,14 +141,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-
-        binding.verticleRecyclerView.apply {
-            layoutManager = popularLayoutManager
-            adapter = popularMovieAdapter
-        }
-
-
-
         binding.verticleRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -187,17 +162,44 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+        ///////////////////////////5
 
         viewModel_popular.getGenre()
 
-        viewModel_now.getNowShowingMovie(nowShowingPage).observe(viewLifecycleOwner) {
+
+        //////////////////////////need to be upgrade
+        /*viewModel_now.getNowShowingMovie(nowShowingPage).observe(viewLifecycleOwner) {
             nowShowingMovieAdapter.submitList(it.results)
             Log.d("nowShowVIew", "onCreateView: " + it.results.toString())
         }
         viewModel_popular.getPopularMovie(popularMoviePage).observe(viewLifecycleOwner) {
             popularMovieAdapter.submitList(it.results)
             // mProgressDialog.dismiss()
+        }*/
+        //////////////////////////need to be upgrade
+
+        /////////////////////////6
+        viewModel_popular.popularMovieResult.observe(viewLifecycleOwner) {
+
+            for (i in 0 until it.results.size -1) {
+                popularList.add(it.results[i])
+            }
+            popularMovieAdapter.submitList(popularList)
+            popularMovieAdapter.notifyDataSetChanged()
+
+            //mProgressDialog.dismiss()
+
         }
+        viewModel_now.NowShowingMovieResult.observe(viewLifecycleOwner) {
+
+            for (i in 0 until it.results.size -1 ) {
+                nowShowinglist.add(it.results[i])
+            }
+            nowShowingMovieAdapter.submitList(nowShowinglist)
+            nowShowingMovieAdapter.notifyDataSetChanged()
+        }
+        ////////////////////////6
+
         return binding.root
     }
 

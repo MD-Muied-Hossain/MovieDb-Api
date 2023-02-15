@@ -15,7 +15,7 @@ class PopularMovieRepository(
     private val context: Context
 ) {
     private val popularMovieLiveData = MutableLiveData<PopularMovieModel>()
-    private val popularLiveData = MutableLiveData<PopularMovieModel>()
+    //private val popularLiveData = MutableLiveData<PopularMovieModel>()
     private val genreMutableLiveData = MutableLiveData<List<Genre>>()
 
     val popularMovie : LiveData<PopularMovieModel>
@@ -27,8 +27,10 @@ class PopularMovieRepository(
     suspend fun getPopularMovie(page : Int){
         try {
             var popularMovieResult = api.getPopularMovie(page)
-            popularMovieLiveData.postValue(popularMovieResult.body())
-           //Log.e("popularMovieResult", "getPopularMovie: "+popularMovieResult.body() )
+            if(popularMovieResult!=null){
+                popularMovieLiveData.postValue(popularMovieResult.body())
+                Log.e("popularMovieResult", "getPopularMovie: "+popularMovieResult.body() )
+            }
         }catch (e:Exception){}
     }
 

@@ -16,7 +16,7 @@ data class BookmarkModel(
     @ColumnInfo(name = "image_path")
     val imageUrl : String,
     @ColumnInfo(name = "genre")
-val genreList : String
+    val genreList : String
 )
 /*
     @ColumnInfo(name = "genre")
