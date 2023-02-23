@@ -1,8 +1,7 @@
-package com.muiedhossain.moviedbapi.app.view
+package com.muiedhossain.moviedbapi.app.view.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,19 +9,23 @@ import android.widget.AbsListView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.muiedhossain.moviedbapi.R
-import com.muiedhossain.moviedbapi.app.adapter.NowShowingMovieAdapter
-import com.muiedhossain.moviedbapi.app.adapter.PopularMovieAdapter
-import com.muiedhossain.moviedbapi.app.model.Genre
-import com.muiedhossain.moviedbapi.app.model.PopularMovieResult
-import com.muiedhossain.moviedbapi.app.viewModel.NowShowingMovieViewModel
-import com.muiedhossain.moviedbapi.app.viewModel.PopularMovieViewModel
-import com.muiedhossain.moviedbapi.app.model.Result
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
+import com.muiedhossain.moviedbapi.app.view.home.adapter.NowShowingMovieAdapter
+import com.muiedhossain.moviedbapi.app.view.home.adapter.PopularMovieAdapter
+import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieResult
+import com.muiedhossain.moviedbapi.app.view.home.viewModel.NowShowingMovieViewModel
+import com.muiedhossain.moviedbapi.app.view.home.viewModel.PopularMovieViewModel
 import com.muiedhossain.moviedbapi.databinding.FragmentHomeBinding
+import com.muiedhossain.moviedbapi.app.view.home.model.Result
+
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding

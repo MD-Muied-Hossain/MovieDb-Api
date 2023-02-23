@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.Genre
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
 
 @Database(entities = [Genre::class, BookmarkModel::class], version = 1/*,exportSchema = false*/)
 abstract class MovieDatabase : RoomDatabase() {

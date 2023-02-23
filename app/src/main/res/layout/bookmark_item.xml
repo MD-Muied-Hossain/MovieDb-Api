@@ -5,7 +5,7 @@
     <data>
         <variable
             name="bookmark"
-            type="com.muiedhossain.moviedbapi.app.model.BookmarkModel" />
+            type="com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel" />
     </data>
 <LinearLayout
     android:layout_width="match_parent"

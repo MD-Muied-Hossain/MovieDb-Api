@@ -1,8 +1,7 @@
-package com.muiedhossain.moviedbapi.app.model
+package com.muiedhossain.moviedbapi.app.view.genres
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.Relation
 
 data class GenreModel(
     val genres: List<Genre>

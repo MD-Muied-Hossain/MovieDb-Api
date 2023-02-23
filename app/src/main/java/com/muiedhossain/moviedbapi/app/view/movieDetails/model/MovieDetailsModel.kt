@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.model
+package com.muiedhossain.moviedbapi.app.view.movieDetails.model
 
 data class MovieDetailsModel(
     val adult: Boolean,

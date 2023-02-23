@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.repository
+package com.muiedhossain.moviedbapi.app.view.home.repository
 
 import android.content.Context
 import android.util.Log
@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.model.Genre
-import com.muiedhossain.moviedbapi.app.model.PopularMovieModel
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
+import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieModel
 
 class PopularMovieRepository(
     private val api: ApiInterface,

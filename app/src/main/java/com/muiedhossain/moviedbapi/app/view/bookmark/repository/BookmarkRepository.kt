@@ -1,11 +1,11 @@
-package com.muiedhossain.moviedbapi.app.repository
+package com.muiedhossain.moviedbapi.app.view.bookmark.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.Genre
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
 
 class BookmarkRepository(
     private val api: ApiInterface,

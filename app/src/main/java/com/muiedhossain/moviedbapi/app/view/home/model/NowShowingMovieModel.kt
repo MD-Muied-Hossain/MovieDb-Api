@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.model
+package com.muiedhossain.moviedbapi.app.view.home.model
 
 data class NowShowingMovieModel(
     val dates: Dates,

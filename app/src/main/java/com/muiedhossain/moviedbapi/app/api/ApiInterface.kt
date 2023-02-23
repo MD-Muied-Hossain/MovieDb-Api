@@ -1,12 +1,11 @@
 package com.muiedhossain.moviedbapi.app.api
 
-import com.muiedhossain.moviedbapi.app.model.GenreModel
-import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
-import com.muiedhossain.moviedbapi.app.model.NowShowingMovieModel
-import com.muiedhossain.moviedbapi.app.model.PopularMovieModel
+import com.muiedhossain.moviedbapi.app.view.genres.GenreModel
+import com.muiedhossain.moviedbapi.app.view.movieDetails.model.MovieDetailsModel
+import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieModel
+import com.muiedhossain.moviedbapi.app.view.home.model.NowShowingMovieModel
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 

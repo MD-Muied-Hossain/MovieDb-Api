@@ -1,11 +1,10 @@
-package com.muiedhossain.moviedbapi.app.repository
+package com.muiedhossain.moviedbapi.app.view.home.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
-import com.muiedhossain.moviedbapi.app.dao.MovieDao
-import com.muiedhossain.moviedbapi.app.model.NowShowingMovieModel
+import com.muiedhossain.moviedbapi.app.view.home.model.NowShowingMovieModel
 
 class NowShowingRepository (private val api: ApiInterface) {
 

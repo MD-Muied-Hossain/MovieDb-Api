@@ -1,14 +1,16 @@
-package com.muiedhossain.moviedbapi.app.adapter
+package com.muiedhossain.moviedbapi.app.view.bookmark.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
 import com.muiedhossain.moviedbapi.databinding.BookmarkItemBinding
 
-class BookmarkAdapter(var callback : (bookmarkModel : BookmarkModel, value : Int) -> Unit) : ListAdapter<BookmarkModel, BookmarkAdapter.BookmarkViewHolder>(BookmarkDiffUtil()){
+class BookmarkAdapter(var callback : (bookmarkModel : BookmarkModel, value : Int) -> Unit) : ListAdapter<BookmarkModel, BookmarkAdapter.BookmarkViewHolder>(
+    BookmarkDiffUtil()
+){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
         var binding = BookmarkItemBinding.inflate(

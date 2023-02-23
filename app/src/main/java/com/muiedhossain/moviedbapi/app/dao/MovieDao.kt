@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.Genre
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
 
 @Dao
 interface MovieDao {

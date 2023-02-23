@@ -6,7 +6,7 @@
     <data>
         <variable
             name="popular"
-            type="com.muiedhossain.moviedbapi.app.model.PopularMovieResult" />
+            type="com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieResult" />
     </data>
 
     <androidx.cardview.widget.CardView

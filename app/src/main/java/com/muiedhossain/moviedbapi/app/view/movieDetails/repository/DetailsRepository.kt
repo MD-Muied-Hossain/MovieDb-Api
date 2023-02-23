@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.repository
+package com.muiedhossain.moviedbapi.app.view.movieDetails.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.movieDetails.model.MovieDetailsModel
 
 class DetailsRepository (
     private var dao: MovieDao,

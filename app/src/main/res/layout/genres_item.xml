@@ -4,7 +4,7 @@
     <data>
         <variable
             name="genres"
-            type="com.muiedhossain.moviedbapi.app.model.Genre" />
+            type="com.muiedhossain.moviedbapi.app.view.genres.Genre" />
     </data>
 
     <LinearLayout

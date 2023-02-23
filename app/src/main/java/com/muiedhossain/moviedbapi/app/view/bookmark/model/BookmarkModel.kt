@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.model
+package com.muiedhossain.moviedbapi.app.view.bookmark.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

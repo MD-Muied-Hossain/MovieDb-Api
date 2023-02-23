@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.viewModel
+package com.muiedhossain.moviedbapi.app.view.home.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,8 +8,8 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.api.RetrofitInstance
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.database.MovieDatabase
-import com.muiedhossain.moviedbapi.app.model.NowShowingMovieModel
-import com.muiedhossain.moviedbapi.app.repository.NowShowingRepository
+import com.muiedhossain.moviedbapi.app.view.home.model.NowShowingMovieModel
+import com.muiedhossain.moviedbapi.app.view.home.repository.NowShowingRepository
 import kotlinx.coroutines.launch
 
 class NowShowingMovieViewModel(application: Application)

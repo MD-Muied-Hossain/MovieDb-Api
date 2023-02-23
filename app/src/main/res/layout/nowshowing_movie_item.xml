@@ -5,7 +5,7 @@
     <data>
         <variable
             name="nowShowing"
-            type="com.muiedhossain.moviedbapi.app.model.Result" />
+            type="com.muiedhossain.moviedbapi.app.view.home.model.Result" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 imageFromUrl="@{nowShowing.poster_path}"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:src="@drawable/movie_placeholder" />
         </androidx.cardview.widget.CardView>
         <LinearLayout
             android:layout_width="100dp"

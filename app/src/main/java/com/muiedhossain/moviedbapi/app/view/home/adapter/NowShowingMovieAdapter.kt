@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.adapter
+package com.muiedhossain.moviedbapi.app.view.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.databinding.NowshowingMovieItemBinding
-import com.muiedhossain.moviedbapi.app.model.Result
+import com.muiedhossain.moviedbapi.app.view.home.model.Result
 
 class NowShowingMovieAdapter(val callback: (movie: Result) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<Result,

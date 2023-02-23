@@ -1,13 +1,14 @@
-package com.muiedhossain.moviedbapi.app.adapter
+package com.muiedhossain.moviedbapi.app.view.genres
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.muiedhossain.moviedbapi.app.model.Genre
 import com.muiedhossain.moviedbapi.databinding.GenresItemBinding
 
-class GenresHorizontalViewAdapter : androidx.recyclerview.widget.ListAdapter<Genre,GenresHorizontalViewAdapter.GenresItemViewHolder>(GenresDiffUtil()){
+class GenresHorizontalViewAdapter : androidx.recyclerview.widget.ListAdapter<Genre, GenresHorizontalViewAdapter.GenresItemViewHolder>(
+    GenresDiffUtil()
+){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenresItemViewHolder {
         var binding = GenresItemBinding.inflate(

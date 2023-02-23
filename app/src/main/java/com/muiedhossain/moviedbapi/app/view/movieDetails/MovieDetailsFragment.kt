@@ -1,6 +1,5 @@
-package com.muiedhossain.moviedbapi.app.view
+package com.muiedhossain.moviedbapi.app.view.movieDetails
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.muiedhossain.moviedbapi.R
-import com.muiedhossain.moviedbapi.app.adapter.GenresHorizontalViewAdapter
+import com.muiedhossain.moviedbapi.app.view.genres.GenresHorizontalViewAdapter
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.Genre
-import com.muiedhossain.moviedbapi.app.viewModel.MovieDetailsViewModel
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
+import com.muiedhossain.moviedbapi.app.view.movieDetails.viewModel.MovieDetailsViewModel
 import com.muiedhossain.moviedbapi.databinding.FragmentMovieDetailsBinding
 
 

@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.adapter
+package com.muiedhossain.moviedbapi.app.view.home.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
-import com.muiedhossain.moviedbapi.app.model.PopularMovieResult
+import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieResult
 import com.muiedhossain.moviedbapi.databinding.PopulerMovieItemBinding
 
-class PopularMovieAdapter(val callback: (movie: PopularMovieResult,binding : PopulerMovieItemBinding,value : Int) -> Unit) :
+class PopularMovieAdapter(val callback: (movie: PopularMovieResult, binding : PopulerMovieItemBinding, value : Int) -> Unit) :
     ListAdapter<PopularMovieResult, PopularMovieAdapter.PopularMovieViewHolder>(PopularMovieDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMovieViewHolder {

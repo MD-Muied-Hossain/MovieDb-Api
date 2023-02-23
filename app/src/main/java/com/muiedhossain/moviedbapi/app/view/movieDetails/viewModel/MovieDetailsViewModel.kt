@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.viewModel
+package com.muiedhossain.moviedbapi.app.view.movieDetails.viewModel
 
 import android.app.Application
 import android.util.Log
@@ -9,9 +9,9 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.api.RetrofitInstance
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.database.MovieDatabase
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.MovieDetailsModel
-import com.muiedhossain.moviedbapi.app.repository.DetailsRepository
+import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
+import com.muiedhossain.moviedbapi.app.view.movieDetails.model.MovieDetailsModel
+import com.muiedhossain.moviedbapi.app.view.movieDetails.repository.DetailsRepository
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel(application: Application) : AndroidViewModel(application) {

@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.viewModel
+package com.muiedhossain.moviedbapi.app.view.home.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,32 +8,32 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.api.RetrofitInstance
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.database.MovieDatabase
-import com.muiedhossain.moviedbapi.app.model.BookmarkModel
-import com.muiedhossain.moviedbapi.app.model.Genre
-import com.muiedhossain.moviedbapi.app.repository.BookmarkRepository
+import com.muiedhossain.moviedbapi.app.view.genres.Genre
+import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieModel
+import com.muiedhossain.moviedbapi.app.view.home.repository.PopularMovieRepository
 import kotlinx.coroutines.launch
 
-class BookmarkViewModel (application: Application)
+class PopularMovieViewModel(application: Application)
     : AndroidViewModel(application) {
-    private lateinit var repository: BookmarkRepository
+    private var repository: PopularMovieRepository
     private var api: ApiInterface = RetrofitInstance.getRetrofitInstance()
         .create(ApiInterface::class.java)
-    private lateinit var dao: MovieDao
+    private var dao : MovieDao
     init {
-
+        api = RetrofitInstance.getRetrofitInstance()
+            .create(ApiInterface::class.java)
         dao = MovieDatabase.getDataBaseInstance(application).getDao()
-        repository = BookmarkRepository(api,dao)
+        repository = PopularMovieRepository(api,dao,application)
     }
 
-    fun getBookmarkMovie() : LiveData<List<BookmarkModel>> {
-        return repository.getBookmarkedMovie()
-    }
-    fun deleteBookmark(id: Long){
+    val popularMovieResult : LiveData<PopularMovieModel>
+        get() = repository.popularMovie
+
+    fun getPopularMovie(page : Int) : LiveData<PopularMovieModel> {
         viewModelScope.launch {
-            try {
-                repository.deleteBookmarked(id)
-            }catch (e:Exception){}
+            repository.getPopularMovie(page)
         }
+        return repository.popularMovie
     }
     fun getGenre() {
         viewModelScope.launch {

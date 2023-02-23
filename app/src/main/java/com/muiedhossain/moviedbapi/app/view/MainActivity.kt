@@ -5,15 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.muiedhossain.moviedbapi.R
-import com.muiedhossain.moviedbapi.app.adapter.NowShowingMovieAdapter
-import com.muiedhossain.moviedbapi.app.adapter.PopularMovieAdapter
-import com.muiedhossain.moviedbapi.app.model.PopularMovieResult
-import com.muiedhossain.moviedbapi.app.viewModel.NowShowingMovieViewModel
-import com.muiedhossain.moviedbapi.app.viewModel.PopularMovieViewModel
 import com.muiedhossain.moviedbapi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
