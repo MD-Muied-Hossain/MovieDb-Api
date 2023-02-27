@@ -14,8 +14,9 @@ import com.muiedhossain.moviedbapi.app.view.bookmark.adapter.BookmarkAdapter
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.view.bookmark.viewModel.BookmarkViewModel
 import com.muiedhossain.moviedbapi.databinding.FragmentBookmarkBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class BookmarkFragment : Fragment() {
 
     private lateinit var fragment_binding: FragmentBookmarkBinding

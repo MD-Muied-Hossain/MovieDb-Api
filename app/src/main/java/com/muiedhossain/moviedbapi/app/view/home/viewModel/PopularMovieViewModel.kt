@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.muiedhossain.moviedbapi.app.api.ApiInterface
-import com.muiedhossain.moviedbapi.app.api.RetrofitInstance
+import com.muiedhossain.moviedbapi.app.diffUtils.RetrofitInstance
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.database.MovieDatabase
 import com.muiedhossain.moviedbapi.app.view.genres.Genre

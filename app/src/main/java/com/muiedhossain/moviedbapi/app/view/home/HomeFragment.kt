@@ -9,10 +9,8 @@ import android.widget.AbsListView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,8 +23,10 @@ import com.muiedhossain.moviedbapi.app.view.home.viewModel.NowShowingMovieViewMo
 import com.muiedhossain.moviedbapi.app.view.home.viewModel.PopularMovieViewModel
 import com.muiedhossain.moviedbapi.databinding.FragmentHomeBinding
 import com.muiedhossain.moviedbapi.app.view.home.model.Result
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel_now: NowShowingMovieViewModel

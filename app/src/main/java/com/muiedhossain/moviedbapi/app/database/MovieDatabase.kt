@@ -15,14 +15,16 @@ abstract class MovieDatabase : RoomDatabase() {
         @Volatile
         private var movieDataBase : MovieDatabase? = null
 
-        fun getDataBaseInstance(context : Context) : MovieDatabase{
+        fun getDataBaseInstance(context : Context) : MovieDatabase {
             if(movieDataBase==null){
                 synchronized(this){
                     movieDataBase = Room.databaseBuilder(
                         context,
                         MovieDatabase::class.java,
                         "movie_database"
-                    ).build()
+                    )
+                        .allowMainThreadQueries()
+                        .build()
                 }
 
             }

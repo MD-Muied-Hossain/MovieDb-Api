@@ -8,8 +8,11 @@ import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.diffUtils.ConstraintUtils
 import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.view.movieDetails.model.MovieDetailsModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class DetailsRepository (
+@Singleton
+class DetailsRepository @Inject constructor(
     private var dao: MovieDao,
     private var api: ApiInterface
     ) {

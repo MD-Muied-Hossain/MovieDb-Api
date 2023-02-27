@@ -27,7 +27,4 @@ interface MovieDao {
     @Query("SELECT * FROM genre_Table WHERE id = :id")
     suspend fun getGenreDataByID(id : Int) : List<Genre>
 
-    @Query("SELECT * FROM genre_Table")
-    suspend fun getAllGenres() : List<Genre>
-
 }

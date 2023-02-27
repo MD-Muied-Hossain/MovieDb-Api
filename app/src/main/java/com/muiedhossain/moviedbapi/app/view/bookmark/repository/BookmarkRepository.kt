@@ -6,8 +6,11 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.view.genres.Genre
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class BookmarkRepository(
+@Singleton
+class BookmarkRepository @Inject constructor(
     private val api: ApiInterface,
     var movieDao: MovieDao) {
     fun getBookmarkedMovie() : LiveData<List<BookmarkModel>> = movieDao.getBookmarkedMovie()

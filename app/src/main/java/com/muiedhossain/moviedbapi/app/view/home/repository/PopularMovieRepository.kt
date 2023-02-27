@@ -8,8 +8,11 @@ import com.muiedhossain.moviedbapi.app.api.ApiInterface
 import com.muiedhossain.moviedbapi.app.dao.MovieDao
 import com.muiedhossain.moviedbapi.app.view.genres.Genre
 import com.muiedhossain.moviedbapi.app.view.home.model.PopularMovieModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class PopularMovieRepository(
+@Singleton
+class PopularMovieRepository @Inject constructor(
     private val api: ApiInterface,
     private val movieDao: MovieDao,
     private val context: Context

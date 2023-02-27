@@ -1,4 +1,4 @@
-package com.muiedhossain.moviedbapi.app.api
+package com.muiedhossain.moviedbapi.app.diffUtils
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

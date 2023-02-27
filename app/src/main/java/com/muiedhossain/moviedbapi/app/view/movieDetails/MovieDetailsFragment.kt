@@ -17,8 +17,9 @@ import com.muiedhossain.moviedbapi.app.view.bookmark.model.BookmarkModel
 import com.muiedhossain.moviedbapi.app.view.genres.Genre
 import com.muiedhossain.moviedbapi.app.view.movieDetails.viewModel.MovieDetailsViewModel
 import com.muiedhossain.moviedbapi.databinding.FragmentMovieDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
     private lateinit var viewModel: MovieDetailsViewModel
     private lateinit var binding: FragmentMovieDetailsBinding
